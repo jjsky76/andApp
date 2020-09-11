@@ -1,0 +1,6 @@
+Test*/
+.gradle/
+.idea/
+gradle/
+build/
+
