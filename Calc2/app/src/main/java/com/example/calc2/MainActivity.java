@@ -41,7 +41,22 @@ public class MainActivity extends AppCompatActivity {
         else if ( op == 'e' )
             return i;
         else
-            return 0;
+            return 0xffffffff;
+    }
+
+    private String getOperator (String op) {
+        if ( op.equals("d") )
+            return "/";
+        else if ( op.equals("m") )
+            return "x";
+        else if ( op.equals("s") )
+            return "-";
+        else if ( op.equals("a") )
+            return "+";
+        else if ( op.equals("e") )
+            return "=";
+        else
+            return "";
     }
 
     // Create an anonymous implementation of OnClickListener
@@ -72,13 +87,13 @@ public class MainActivity extends AppCompatActivity {
                 if (in_op) {
                     if (last_op == 'e')
                         init_data();
-                    text = "'0.";
+                    text = "0.";
                     in_op = false;
                 }
                 else {
                     if (text.indexOf('.') != -1)
                         return ;
-                    text = text + btn;
+                    text = text + ".";
                 }
             }
             else if ( btn.charAt(0) == 'c' ) {
@@ -96,8 +111,9 @@ public class MainActivity extends AppCompatActivity {
             else if ( btn.charAt(0) == 'd' || btn.charAt(0) == 'm' || btn.charAt(0) == 's' || btn.charAt(0) == 'a' ) {
                 if (in_op && last_op != 'e') {
                     last_op = btn.charAt(0);
-                    formula = formula.substring(0, formula.length() -2) + ' ' + btn;
-                    //self.lineEdit_fo.setText(self.formula)
+                    formula = formula.substring(0, formula.length() -2) + ' ' + getOperator(btn);
+                    TextView formulaText = (TextView) findViewById(R.id.textView2);
+                    formulaText.setText(formula);
                     return;
                 }
 
@@ -114,9 +130,9 @@ public class MainActivity extends AppCompatActivity {
                     res_s = res_s.substring(0, res_s.length() -2 );
 
                 if (last_op == 'e')
-                    formula = res_s + ' ' + btn;
+                    formula = res_s + ' ' + getOperator(btn);
                 else
-                    formula = formula + ' ' + res_s + ' ' + btn;
+                    formula = formula + ' ' + text + ' ' + getOperator(btn);
                 text = res_s;
                 in_op = true;
                 last_op = btn.charAt(0);
@@ -131,14 +147,16 @@ public class MainActivity extends AppCompatActivity {
                 if ( res_s.indexOf('.') != -1 && res_s.charAt(res_s.length() -1) == '0' )
                     res_s = res_s.substring(0, res_s.length() -2 );
 
-                formula = formula + ' ' + text + ' ' + btn;
+                formula = formula + ' ' + text + ' ' + getOperator(btn);
                 text = res_s;
                 in_op = true;
                 last_op = btn.charAt(0);
             }
 
-            TextView textView = (TextView) findViewById(R.id.textView2);
-            textView.setText(text);
+            TextView resText = (TextView) findViewById(R.id.textView1);
+            resText.setText(text);
+            TextView formulaText = (TextView) findViewById(R.id.textView2);
+            formulaText.setText(formula);
 
         }
     };
@@ -168,6 +186,8 @@ public class MainActivity extends AppCompatActivity {
         button_8.setOnClickListener(mListener);
         Button button_9 = (Button)findViewById(R.id.button_9);
         button_9.setOnClickListener(mListener);
+        Button button_j = (Button)findViewById(R.id.button_j);
+        button_j.setOnClickListener(mListener);
 
         Button button_c = (Button)findViewById(R.id.button_c);
         button_c.setOnClickListener(mListener);

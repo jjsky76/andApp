@@ -10,6 +10,7 @@
         android:id="@+id/linearLayout7"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_margin="12dp"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -30,16 +31,15 @@
                 android:layout_height="wrap_content"
                 android:minHeight="60dip"
                 android:textAlignment="textEnd"
-                android:textSize="24sp" />
+                android:textSize="64sp" />
 
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="60dip"
-                android:text="0"
                 android:textAlignment="textEnd"
-                android:textSize="64sp" />
+                android:textSize="30sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -50,19 +50,23 @@
 
             <Button
                 android:id="@+id/button"
-                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:minHeight="70dp" />
+                android:minHeight="70dp"
+                android:text="GH"
+                android:textSize="36sp"
+                android:visibility="invisible" />
 
             <Button
                 android:id="@+id/button2"
-                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:minHeight="70dp" />
+                android:minHeight="70dp"
+                android:text="GH"
+                android:textSize="36sp"
+                android:visibility="invisible" />
 
             <Button
                 android:id="@+id/button_c"
@@ -79,7 +83,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:minHeight="70dp"
-                android:text="Del"
+                android:text="←"
                 android:textSize="36sp" />
         </LinearLayout>
 
